@@ -39,14 +39,19 @@
                 <ul class="flex overflow-x-auto scrollbar-hide items-center gap-3 p-2">
                     @for ($i = 0; $i < 10; $i++)
                         <li class="flex flex-col justify-center w-20 gap-1 p-2">
-                            <img 
+                            <x-avatar 
                                 src="https://source.unsplash.com/random/500x500?face&sig={{ $i }}" 
                                 class="h-14 w-14 rounded-full object-cover ring-2 ring-pink-500"
-                                alt="Story Avatar">
+                                alt="Story Avatar"/>
                             <p class="text-xs font-medium truncate text-center">{{ fake()->name }}</p>
                         </li>
                     @endfor
                 </ul>
+            </section>
+
+            {{-- Posts --}}
+            <section class="mt-5 space-y-4 p-2">
+                <livewire:post.item/>
             </section>
 
             {{-- Example Post Placeholder --}}
@@ -70,10 +75,10 @@
                 <ul class="space-y-3">
                     @for ($i = 0; $i < 5; $i++)
                         <li class="flex items-center gap-3">
-                            <img 
+                            <x-avatar 
                                 src="https://source.unsplash.com/random/500x500?face&sig=sug{{ $i }}" 
                                 class="w-12 h-12 rounded-full object-cover" 
-                                alt="Suggested User">
+                                alt="Suggested User"/>
                             <div class="grid grid-cols-7 w-full gap-2">
                                 <div class="col-span-5">
                                     <h5 class="font-semibold truncate text-sm">{{ fake()->name }}</h5>
