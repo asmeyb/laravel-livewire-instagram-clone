@@ -12,7 +12,7 @@
         <div class="grid grid-cols-7 w-full gap-2">
 
             <div class="col-span-5">
-                <h5 class="font-semibold truncate text-sm"> {{fake()->name}} </h5>
+                <h5 class="font-semibold truncate text-sm"> {{$post->user->name}} </h5>
             </div>
 
             <div class="col-span-2 flex text-right justify-end">
@@ -65,41 +65,53 @@
                 <!-- Additional required wrapper -->
                 <div x-cloak class="swiper-wrapper">
                     <!-- Slides -->
-                    <div class="swiper-slide"> <x-video /> </div>
-                    <div class="swiper-slide"> <img src="https://images.pexels.com/photos/17342296/pexels-photo-17342296/free-photo-of-balloons-flying-over-the-canyons.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="" class="h-[500px] w-full block object-scale-down"> </div>
-                    <div class="swiper-slide"> <img src="https://images.pexels.com/photos/17342296/pexels-photo-17342296/free-photo-of-balloons-flying-over-the-canyons.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="" class="h-[500px] w-full block object-scale-down"> </div>
-                    <div class="swiper-slide"> <img src="https://images.pexels.com/photos/17342296/pexels-photo-17342296/free-photo-of-balloons-flying-over-the-canyons.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="" class="h-[500px] w-full block object-scale-down"> </div>
-
+                    @foreach ($post->media as $file)
+                        <li class="sweeper-slide">
+                            @switch($file->mime)
+                                @case('video')
+                                    <x-video source="{{ $file->url }}" />
+                                    @break
+                                @case('image')
+                                    <img src="{{ $file->url }}" alt="" class="h-[500px] w-full block object-scale-down">
+                                    @break
+                                @default                                
+                            @endswitch
+                        </li>
+                    @endforeach                   
 
                 </div>
                 <!-- If we need pagination -->
                 <div class="swiper-pagination"></div>
 
-                {{-- prev --}}
-                <div class="swiper-button-prev absolute top-1/2 z-10 p-2">
-                    <div class=" bg-white/95 border p-1 rounded-full text-gray-900">
+                @if(count($post->media) > 1)
+                        {{-- prev --}}
+                    <div class="swiper-button-prev absolute top-1/2 z-10 p-2">
+                        <div class=" bg-white/95 border p-1 rounded-full text-gray-900">
 
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.8" stroke="currentColor" class="w-4 h-4">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-                          </svg>
-                          
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.8" stroke="currentColor" class="w-4 h-4">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                            </svg>
+                            
 
-                    </div>
-
-                </div>
-
-                {{-- next  --}}
-                <div class="swiper-button-next absolute right-0 top-1/2 z-10 p-2">
-                    <div class=" bg-white/95 border p-1 rounded-full text-gray-900">
-
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.8" stroke="currentColor" class="w-4 h-4">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                          </svg>
-                          
-                          
+                        </div>
 
                     </div>
-                </div>
+
+                    {{-- next  --}}
+                    <div class="swiper-button-next absolute right-0 top-1/2 z-10 p-2">
+                        <div class=" bg-white/95 border p-1 rounded-full text-gray-900">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.8" stroke="currentColor" class="w-4 h-4">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                            </svg>
+                            
+                            
+
+                        </div>
+                    </div>
+                @endif
+
+                
 
                 <!-- If we need scrollbar -->
                 <div class="swiper-scrollbar"></div>
@@ -162,10 +174,8 @@
 
         {{-- name and comment --}}
         <div class="flex text-sm gap-2 font-medium">
-            <p> <strong class="font-bold">{{fake()->name}} </strong>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus facilis cumque aperiam officia
-                commodi explicabo voluptatibus aliquid omnis culpa magnam enim ullam praesentium, ab maiores expedita,
-                architecto consectetur placeat. Magnam?
+            <p> <strong class="font-bold">{{$post->user->name}} </strong>
+                {{ $post->description }}
             </p>
         </div>
 
