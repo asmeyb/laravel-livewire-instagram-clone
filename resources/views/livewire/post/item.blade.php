@@ -36,14 +36,18 @@
     {{-- main --}}
     <main>
         <div class="my-2">
+            @php
+                $mediaCount = count($post->media);
+            @endphp
             <!-- Slider main container -->
             <div 
+            x-data="{ mediaCount: {{ $mediaCount }} }"
             x-init="
 
             new Swiper($el,{
 
                 modules: [Navigation, Pagination],
-                loop:true,
+                loop: mediaCount >= 2,
 
                 pagination: {
                     el: '.swiper-pagination',
@@ -63,20 +67,20 @@
             
             class="swiper h-[500px] border bg-white">
                 <!-- Additional required wrapper -->
-                <div x-cloak class="swiper-wrapper">
+                <div class="swiper-wrapper">
                     <!-- Slides -->
                     @foreach ($post->media as $file)
-                        <li class="sweeper-slide">
+                        <div class="swiper-slide flex items-center justify-center">
                             @switch($file->mime)
                                 @case('video')
                                     <x-video source="{{ $file->url }}" />
                                     @break
                                 @case('image')
-                                    <img src="{{ $file->url }}" alt="" class="h-[500px] w-full block object-scale-down">
+                                    <img src="{{ $file->url }}" alt="" class="w-full h-full object-contain">
                                     @break
                                 @default                                
                             @endswitch
-                        </li>
+                        </div>
                     @endforeach                   
 
                 </div>

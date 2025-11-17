@@ -45,8 +45,12 @@ class MediaFactory extends Factory
 
                     'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
                     'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
-                    'https://images.unsplash.com/photo-1683009427692-8a28348b0965?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60',
-                    'https://images.unsplash.com/photo-1695266543586-b4d77d54c3b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw4fHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60'
+                    'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80',
+                    'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&q=80',
+                    'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&q=80',
+                    'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=800&q=80',
+                    'https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=800&q=80',
+                    'https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=800&q=80'
 
                 ];
 

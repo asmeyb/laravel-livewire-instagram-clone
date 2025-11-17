@@ -3,9 +3,14 @@ import './bootstrap';
 import { livewire_hot_reload } from 'virtual:livewire-hot-reload'
 livewire_hot_reload();
 
-import Alpine from 'alpinejs';
-window.Alpine = Alpine;
-Alpine.start();
+import focus from '@alpinejs/focus';
+import intersect from '@alpinejs/intersect';
+
+// Livewire v3 manages Alpine automatically, so we hook into it
+document.addEventListener('livewire:init', () => {
+    window.Alpine.plugin(focus);
+    window.Alpine.plugin(intersect);
+});
 
 
 // core version + navigation, pagination modules:

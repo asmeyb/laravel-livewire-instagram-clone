@@ -30,7 +30,7 @@
             {{-- upload media -will be hidden if files count <0 --}}
             @if (count($media)==0)
             <label for="customFileInput" class="m-auto max-w-fit   flex-col  flex  gap-3 cursor-pointer">
-                <input wire:model.live="media"  type="file" wire:model="photo" multiple accept=".jpg,.png,.jpeg,.mp4" class="sr-only" id="customFileInput">
+                <input wire:model.live="media"  type="file" multiple accept=".jpg,.png,.jpeg,.mp4" class="sr-only" id="customFileInput">
 
                 <span class="m-auto">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

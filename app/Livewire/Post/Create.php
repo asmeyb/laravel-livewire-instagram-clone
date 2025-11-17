@@ -76,7 +76,7 @@ class Create extends ModalComponent
 
             $path= $media->store('media','public');
 
-            $url= url(Storage::url($path));
+            $url= Storage::url($path);
 
 
             #create media 
@@ -91,21 +91,13 @@ class Create extends ModalComponent
 
             ]);
 
-
-            $this->reset();
-            $this->dispatch('close');
-
-
-
-            #dispatch event for post created
-
-            $this->dispatch('post-created',$post->id);
-
-
-
-
-
         }
+
+        #dispatch event for post created
+        $this->dispatch('post-created',$post->id);
+
+        $this->reset();
+        $this->closeModal();
 
 
  

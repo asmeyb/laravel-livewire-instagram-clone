@@ -167,7 +167,7 @@
                 <h4 x-cloak x-show="!(shrink||drawer)" class=" text-lg font-medium">Notifications</h4>
             </a></li>
         <li>
-            <button type="button" @click="$dispatch('openModal', { component: 'post.create' })"
+            <button type="button" @click="$event.target.blur(); $dispatch('openModal', {component: 'post.create'})"
                 class="flex items-center gap-5 cursor-pointer">
 
                 <span class="border border-gray-600  rounded-lg p-px">

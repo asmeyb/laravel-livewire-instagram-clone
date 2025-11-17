@@ -15,6 +15,11 @@
             [x-cloak]{
                 display: none !important;
             }
+            /* Ensure modal appears above drawer */
+            [x-data*="LivewireUIModal"] {
+                position: fixed !important;
+                z-index: 9999 !important;
+            }
         </style>
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -35,6 +40,7 @@
             
             </div>
           </div>
-          @livewire('wire-elements-modal')
+          
+        @livewire('wire-elements-modal')
     </body>
 </html>
